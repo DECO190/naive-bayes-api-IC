@@ -1,12 +1,19 @@
 FROM python:3.11.6
 
-ADD app.py .
+ARG USERNAME
 
-WORKDIR /naive-bayes
-COPY ./requirements.txt /naive-bayes/requirements.txt
+ARG PROJECT_NAME=naivebayes
+
+RUN useradd -m $USERNAME 
+
+USER $USERNAME
+
+WORKDIR /home/$USERNAME/$PROJECT_NAME
+
+COPY ./requirements.txt .
 
 RUN pip install -r requirements.txt
 
-COPY . /naive-bayes
+COPY . dev
 
-CMD [ "python", "./app.py" ]
+CMD [ "python", "app.py" ]
