@@ -1,2 +1,2 @@
 #!/bin/bash
-docker build . -t naive-bayes --build-arg USERNAME="deco"
+docker build . -t naivebayes-image --build-arg USERNAME="deco"
